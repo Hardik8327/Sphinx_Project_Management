@@ -1,0 +1,55 @@
+<app-navbar></app-navbar>
+<h2 style="margin-left: 38%; font-size: 50px;">User Dashboard</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+             <th></th>
+              <th data-priority="1">Project Name</th>
+              <th data-priority="2">Cost</th>
+              <th data-priority="4">Description</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Display data rows -->
+            <ng-container *ngFor="let license of licenses">
+              <tr>
+                <td></td>
+                <td>
+                  <!-- Display license name -->
+                  {{ license.lName }}
+                </td>
+                <td>{{ license.price }}</td>
+                <td >{{license.desc}}</td>
+              </tr>
+            </ng-container>
+          
+            <!-- Add vertical spacing between data rows and dropdown -->
+            <!-- <tr style="height: 40px;"></tr> -->
+          
+            <!-- Default row for adding new data -->
+            <tr>
+              <td></td> <!-- Empty cell for ID -->
+              <td>
+                <!-- Dropdown with options -->
+                <select class="form-select" style="width: 650px; height: 50px; font-size: 16px;" [(ngModel)]="selectedOption">
+                  <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+                </select>
+              </td>
+              <td style="width: 20%;">{{ getPrice() }}</td> <!-- Display price dynamically -->
+              <td style="width: 20%;">{{ getDesc() }}</td> <!-- Display price dynamically -->
+              <td>
+                <button style="background-color: darkgreen; color: white; width: 100px; height: 40px; font-size: 16px;" (click)="buyLicense()" [disabled]="!selectedOption">ADD</button>
+              </td>
+            </tr>
+          </tbody>
+          
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+  </div>
+</div>

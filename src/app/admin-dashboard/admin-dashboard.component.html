@@ -1,0 +1,45 @@
+<app-navbar2></app-navbar2>
+<h2 style="margin-left: 38%; font-size: 40px;">Admin Dashboard</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th data-priority="1">NAME</th>
+              <th data-priority="2">USERNAME</th>
+              <th data-priority="4">PASSWORD</th>
+              <th data-priority="4">No. of Project working</th>
+              <th data-priority="4">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Display data rows -->
+            <ng-container *ngFor="let user of users">
+              <tr (click)="navigateToUserDetails(user.id)">
+                <td>
+                  <!-- Display license name -->
+                  {{ user.name }}
+                </td>
+                <td>{{ user.username }}</td>
+                <td >{{user.password}}</td>
+                <td style="text-align: center;">{{user.licenses.length}}</td>
+                <td>
+                  <button class="btn btn-danger" (click)="deleteUser(user.id)">Delete</button>
+                </td>
+              </tr>
+            </ng-container>
+          
+            <!-- Add vertical spacing between data rows and dropdown -->
+           
+          </tbody>
+          
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+  </div>
+</div>
+

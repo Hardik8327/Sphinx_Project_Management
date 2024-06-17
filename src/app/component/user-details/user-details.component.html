@@ -1,0 +1,55 @@
+<app-navbar2></app-navbar2>
+<div class="container">
+<h2 style="margin-left: 38%; font-size: 20px;">User Details</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<div>
+    <form>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="user.name">
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="user.username" >
+        
+        <label for="username">Password</label>
+        <input type="text" id="password" name="password" [(ngModel)]="user.password" >
+
+        <label for="name">No. of projects</label>
+        <input type="text" id="noOfLicense" name="noOfLicense" [(ngModel)]="user.licenses.length" disabled="true" >
+        <button class="btn btn-success" style="height: 70px; width: 150px; font-size: large;" (click)="updateaUser()">UPDATE</button>
+      </form>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="table-responsive" data-pattern="priority-columns">
+        <table summary="This table shows how to create responsive tables using RWD-Table-Patterns' functionality" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th data-priority="1">Project Name</th>
+              <th data-priority="2">Cost</th>
+              <th data-priority="4">Description</th>
+              <th data-priority="4">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Display data rows -->
+            <tr *ngFor="let license of user.licenses">
+                <td>{{ license.lName }}</td>
+                <td>{{ license.price }}</td>
+                <td>{{ license.desc }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="deleteLicense(license.lId)">Delete</button>
+
+                </td>
+              </tr>
+          
+            <!-- Add vertical spacing between data rows and dropdown -->
+           
+          </tbody>
+          
+        </table>
+      </div><!--end of .table-responsive-->
+    </div>
+  </div>
+</div>
+
